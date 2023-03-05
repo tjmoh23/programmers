@@ -9,5 +9,5 @@ def solution(numbers, direction):
         
     return list(numbers)
   
-  # deque()
-  # 함수 안에 양수를 넣으면 오른쪽 회전, 음수를 넣으면 왼쪽 회전
+  # deque( )
+  # 함수 안에 양수를 넣으면 오른쪽 회전, 음수를 넣으면 왼쪽 회전.
