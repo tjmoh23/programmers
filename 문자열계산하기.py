@@ -35,3 +35,4 @@ def solution(my_string):
 
 
 # 추가 풀이 더 공부하기
+# https://blockdmask.tistory.com/437 참
