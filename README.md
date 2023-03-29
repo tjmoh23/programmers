@@ -1,2 +1,2 @@
 # programmers
-coding practices with "Pytho"
+coding practices with "Python"
