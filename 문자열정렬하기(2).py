@@ -15,6 +15,8 @@ def solution(my_string):
   
 # sort()와 sorted() 차이점
 # sorted 함수는 정렬된 새로운 리스트 리턴해주는 반면, sort 메소드는 아무것도 리턴하지 않는다.
+# 다시 말해, sorted는 원본을 만지지 않는다. return 값은 정렬된 값이다. 데이터 분석에서는 원본을 만지지 않는다.
+# sort에서 return값은 None이다. list를 print해야 출력된다.
 
 sample = [5, 7, 2, 3, 1]
 print(sorted(sample))
@@ -30,6 +32,7 @@ print(sample)
 
 
 # 반면에 sort 메소드는 sample 자체를 정렬해버린다.
+
 sample.sort()
 print(sample)
 # [1, 2, 3, 5, 7]
