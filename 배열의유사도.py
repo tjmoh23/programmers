@@ -45,4 +45,4 @@ def solution(s1, s2)
 # s1.difference(s2) 또는 s1 - s2 : 차집합 -> {1} (차집합은 순서 상관 있다)
 
 
-# 참고 자료: https://blockdmask.tistory.com/451
+# 참고 자료 : https://blockdmask.tistory.com/451
