@@ -7,3 +7,5 @@ WHERE B.STATUS = 'DONE'
 GROUP BY U.USER_ID
 HAVING TOTAL_SALES >= 700000
 ORDER BY TOTAL_SALES
+
+-- 문제 출처: https://school.programmers.co.kr/learn/courses/30/lessons/164668
