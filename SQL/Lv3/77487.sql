@@ -9,7 +9,7 @@ WHERE HOST_ID IN (
     FROM PLACES
     GROUP BY HOST_ID
     HAVING COUNT(ID) > 1);
-
+ORDER BY ID
 
 -- 처음에는 아래처럼 풀고 제출했는데 'Operand should contain 1 column(s)' 이런 오류가 발생했다
 -- 주로 WHERE절에서 서브쿼리를 사용할 때 발생하는 오류다
@@ -25,5 +25,6 @@ WHERE HOST_ID IN (
     GROUP BY HOST_ID
     HAVING COUNT(ID) > 1
 )
+ORDER BY ID
 
 -- 문제 출처: https://school.programmers.co.kr/learn/courses/30/lessons/77487
