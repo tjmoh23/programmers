@@ -21,6 +21,6 @@ ORDER BY AUTHOR_ID, CATEGORY DESC
 
 -- 1월 판매량만 뽑는 방법은 다양하다
 -- 1) WHERE DATE_FORMAT(SALES_DATE,'%Y-%m') = '2022-01'
--- 2) WHERE TO_CHAR(BS.SALES_DATE, 'YYYY-MM') = '202201' 등..
+-- 2) WHERE TO_CHAR(BS.SALES_DATE, 'YYYY-MM') = '202201' 등...
 
 -- 문제 출처: https://school.programmers.co.kr/learn/courses/30/lessons/144856
