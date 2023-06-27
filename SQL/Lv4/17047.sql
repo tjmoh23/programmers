@@ -1,0 +1,31 @@
+-- PATIENT, DOCTOR 그리고 APPOINTMENT 테이블에서 2022년 4월 13일 취소되지 않은 흉부외과(CS) 진료 예약 내역을 조회하는 SQL문을 작성
+-- 환자 정보, 의사 정보, 예약 정보 테이블로 구성되어 있어서 APPOINTMENT을 기준으로 합쳐야 된다 
+
+-- 처음 풀이
+
+SELECT A.APNT_NO, P.PT_NAME, A.PT_NO, A.MCDP_CD, D.DR_NAME, A.APNT_YMD
+FROM (SELECT APNT_YMD, APNT_NO, PT_NO, MCDP_CD, MDDR_ID, APNT_CNCL_YN
+FROM APPOINTMENT
+WHERE APNT_CNCL_YN = 'N'
+AND MCDP_CD = 'CS'
+AND APNT_YMD LIKE '2022-04-13%') AS A
+JOIN DOCTOR AS D ON A.MDDR_ID = D.DR_ID
+JOIN PATIENT AS P ON A.PT_NO = P.PT_NO
+ORDER BY APNT_YMD
+
+-- 그냥 내부 조인만 두 번하면 더 쉽게 풀 수 있는데 너무 코드를 너무 복잡하게 짠 듯하다
+
+
+-- 보기 좋게 다시 짠 풀이
+
+SELECT A.APNT_NO, P.PT_NAME, P.PT_NO, D.MCDP_CD, D.DR_NAME, A.APNT_YMD
+FROM APPOINTMENT A
+JOIN PATIENT P ON A.PT_NO = P.PT_NO
+JOIN DOCTOR D ON A.MDDR_ID = D.DR_ID
+WHERE APNT_YMD LIKE '2022-04-13%'
+AND A.MCDP_CD = 'CS'
+AND A.APNT_CNCL_YN = 'N'
+ORDER BY APNT_YMD
+
+
+-- 문제 출처: https://school.programmers.co.kr/learn/courses/30/lessons/132204
