@@ -1,5 +1,6 @@
 
 -- 서브 쿼리로 풀기
+-- 추가로, 서브쿼리와 메인쿼리의 FROM절이 같으면 성능이 안 좋아질 수 있다
 SELECT
     PRODUCT_ID, PRODUCT_NAME, PRODUCT_CD,
     CATEGORY, PRICE
