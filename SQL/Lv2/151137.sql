@@ -1,5 +1,7 @@
 --  '통풍시트', '열선시트', '가죽시트' 중 하나 이상의 옵션이 포함된 자동차가 자동차 종류 별로 몇 대인지 출력
 
+-- 내 풀이
+
 SELECT 
     CAR_TYPE, COUNT(OPTIONS) AS CARS
 FROM CAR_RENTAL_COMPANY_CAR
@@ -9,7 +11,26 @@ ORDER BY CAR_TYPE
 
 
 -- IN은 포함이 아니라 (= OR) 의 의미이다.
--- 컬럼값이 통풍시트인지, 열선시트인지, 가죽시트인지 하나 하를 확인하는 거다.
+-- 컬럼값이 통풍시트인지, 열선시트인지, 가죽시트인지 하나 하나 확인하는 거다.
 -- ★IN은 포함된 게 있는지 보는 게 아니다!!!!!!!★
+-- 추가로 이 문제에서는 OPTIONS 컬럼 전체가 하나의 문자열 이런 느낌
+
+    
+-- 또 다른 풀이
+
+SELECT 
+    CAR_TYPE,
+    COUNT(CAR_ID) AS CARS
+FROM CAR_RENTAL_COMPANY_CAR 
+WHERE REGEXP_LIKE(OPTIONS, '가죽시트|통풍시트|열선시트') -- 정규 표현식
+GROUP BY CAR_TYPE
+ORDER BY CAR_TYPE 
+
+-- WHERE OPTIONS LIKE '%통풍시트%'
+-- OR OPTIONS LIKE '%가죽시트%'
+-- OR OPTIONS LIKE '%열선시트% 로 일일이 조건을 다는 것보다 정규 표현식으로 한번에 표현하는 게 효율적!
+
+
+
 
 -- 문제 출처: https://school.programmers.co.kr/learn/courses/30/lessons/151137
