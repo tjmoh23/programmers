@@ -31,6 +31,22 @@ ORDER BY CAR_TYPE
 -- OR OPTIONS LIKE '%열선시트% 로 일일이 조건을 다는 것보다 정규 표현식으로 한번에 표현하는 게 효율적!
 
 
+-- 다른 풀이
 
+SELECT DISTINCT CAR_TYPE, COUNT(*) OVER(PARTITION BY CAR_TYPE) AS CARS
+FROM CAR_RENTAL_COMPANY_CAR
+WHERE OPTIONS LIKE '%통풍시트%' OR OPTIONS LIKE '%열선시트%' OR OPTIONS LIKE '%가죽시트%'
+ORDER BY CAR_TYPE ASC;
+
+
+
+-- WINDOW 함수 사용하기
+-- 집계함수를 윈도우 함수로 바꾸는 방법
+-- 1. GROUP BY 절을 지웁니다.
+-- 2. 윈도우함수 SELECT절에 적용시킵니다
+-- 3. SELECT절에 DISTINCT 추가합니다.
+
+
+-- 윈도우 함수는 집계함수로 못 바꾼다.
 
 -- 문제 출처: https://school.programmers.co.kr/learn/courses/30/lessons/151137
