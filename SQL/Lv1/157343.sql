@@ -10,5 +10,5 @@
     ORDER BY "구분6", "구분5", "구분4", "구분3", "구분2", "구분1"
 
 
--- LIKE를 사용하여 푸는 간단한 문제지만, 정규표현식을 사용하여 문제를 풀어보도록 하자. 아직 안 풀었음! 
+-- LIKE를 사용하여 푸는 간단한 문제지만, 정규표현식을 사용하여 문제를 풀어보도록 하자. 아직 안 풀었음!  
 -- 문제 출처: https://school.programmers.co.kr/learn/courses/30/lessons/157343?language=oracle
