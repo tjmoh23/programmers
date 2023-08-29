@@ -1,0 +1,49 @@
+-- 내 풀이
+-- UNION(합집합)으로 계산할 때 가장 중요한 것은 ★컬럼의 순서와 개수★
+-- 이름은 달라도 상관없지만 순서와 개수는 같아야 한다!
+SELECT 
+    TO_CHAR(SALES_DATE, 'YYYY-MM-DD') AS SALES_DATE,
+    PRODUCT_ID, USER_ID, SALES_AMOUNT
+FROM ONLINE_SALE
+WHERE TO_CHAR(SALES_DATE, 'YYYY-MM-DD') LIKE '2022-03%'
+UNION
+SELECT 
+    TO_CHAR(SALES_DATE, 'YYYY-MM-DD') AS SALES_DATE,
+    PRODUCT_ID, NULL AS USER_ID, SALES_AMOUNT
+FROM OFFLINE_SALE
+WHERE TO_CHAR(SALES_DATE, 'YYYY-MM-DD') LIKE '2022-03%'
+ORDER BY SALES_DATE, PRODUCT_ID, USER_ID
+
+
+
+-- 다른 풀이
+-- 먼저 UNION한 후 밖에서 조건 걸기(내 풀이는 각각 조건 걸고 UNION)
+SELECT
+    TO_CHAR(SALES_DATE, 'YYYY-MM-DD') AS SALES_DATE,
+    PRODUCT_ID,
+    USER_ID,
+    SALES_AMOUNT
+FROM (
+    SELECT
+        SALES_DATE,
+        PRODUCT_ID,
+        USER_ID,
+        SALES_AMOUNT
+    FROM ONLINE_SALE
+    UNION
+    SELECT
+        SALES_DATE,
+        PRODUCT_ID,
+        NULL,         -- 이름 안 써도 된다
+        SALES_AMOUNT
+    FROM OFFLINE_SALE
+    )
+WHERE TO_CHAR(SALES_DATE, 'YYYY-MM') = '2022-03'
+ORDER BY 
+    SALES_DATE,
+    PRODUCT_ID,
+    USER_ID
+
+
+
+-- 문제 출처: https://school.programmers.co.kr/learn/courses/30/lessons/131537
